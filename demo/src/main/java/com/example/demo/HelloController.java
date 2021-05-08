@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,9 +13,13 @@ public class HelloController {
 private String hello(){
 	return "/index.html";
 }
+
+@Autowired
+DemoService service;
 @RequestMapping(value="/demo")
 private String callService(){
-	DemoService.execute();
+	service.execute();
+//	new DemoService("初期化");
 	return "/index.html";
 }
 }
